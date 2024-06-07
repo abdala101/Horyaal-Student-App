@@ -1,5 +1,6 @@
 package com.horyaalstudentapp.android
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,13 +26,15 @@ class StudentAdapter(private val studentList: List<Student>) :
 
     class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val studentName: TextView = itemView.findViewById(R.id.student_name_tv)
-        private val studentEmail: TextView = itemView.findViewById(R.id.student_email_tv)
-        private val studentPhone: TextView = itemView.findViewById(R.id.student_phone_tv)
 
         fun bind(student: Student) {
             studentName.text = student.fullname
-            studentEmail.text = student.email
-            studentPhone.text = student.phone.toString()
+            itemView.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(context, StudentDetailActivity::class.java)
+                intent.putExtra("studentId", student.id)
+                context.startActivity(intent)
+            }
         }
     }
 }

@@ -8,18 +8,22 @@ import androidx.room.Update
 
 @Dao
 interface StudentDAO {
-    @Query("SELECT * from Student")
-    fun getStudentList(): List<Student>
+    @Query("SELECT * FROM student")
+    fun getAllStudents(): List<Student>
 
-    @Query("SELECT * FROM Student WHERE id = :studentId")
+    @Query("SELECT * FROM student WHERE id = :studentId LIMIT 1")
     fun getStudentById(studentId: Int): Student
 
     @Update
     fun updateStudent(student: Student)
 
-    @Query("DELETE FROM Student WHERE id = :studentId")
-    fun deleteStudent(studentId: Int)
+    @Delete
+    fun deleteStudent(student: Student)
+
+    @Query("DELETE FROM student WHERE id = :studentId")
+    fun deleteStudentById(studentId: Int)
 
     @Insert
     fun saveStudent(student: Student)
 }
+
