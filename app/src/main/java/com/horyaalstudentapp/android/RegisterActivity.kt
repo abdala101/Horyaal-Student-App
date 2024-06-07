@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
@@ -18,7 +19,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var confirmPasswordEditText: EditText
     private lateinit var registerButton: Button
-    private lateinit var displayStudentsButton: Button  // New button
+    private lateinit var signInTextView: TextView // New TextView
 
     private lateinit var database: MyDatabase
 
@@ -34,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.password)
         confirmPasswordEditText = findViewById(R.id.confirm)
         registerButton = findViewById(R.id.register_btn)
-        displayStudentsButton = findViewById(R.id.display_students)  // Initialize new button
+        signInTextView = findViewById(R.id.signin) // Initialize new TextView
 
         registerButton.setOnClickListener {
             val fullName = fullNameEditText.text.toString()
@@ -62,8 +63,10 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        displayStudentsButton.setOnClickListener {
-            val intent = Intent(this, NewStudentActivity::class.java)
+
+
+        signInTextView.setOnClickListener { // Set click listener on TextView
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

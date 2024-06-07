@@ -14,6 +14,9 @@ interface StudentDAO {
     @Query("SELECT * FROM student WHERE id = :studentId LIMIT 1")
     fun getStudentById(studentId: Int): Student
 
+    @Query("SELECT * FROM student WHERE email = :email AND password = :password LIMIT 1")
+    fun getStudentByEmailAndPassword(email: String, password: String): Student?
+
     @Update
     fun updateStudent(student: Student)
 
@@ -26,4 +29,5 @@ interface StudentDAO {
     @Insert
     fun saveStudent(student: Student)
 }
+
 
