@@ -51,6 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                         database.studentDAO().saveStudent(student)
                         runOnUiThread {
                             Toast.makeText(this@RegisterActivity, "Student registered successfully!", Toast.LENGTH_LONG).show()
+                            clearInputFields()
                         }
                     }
                 } else {
@@ -65,5 +66,13 @@ class RegisterActivity : AppCompatActivity() {
             val intent = Intent(this, NewStudentActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun clearInputFields() {
+        fullNameEditText.text.clear()
+        emailEditText.text.clear()
+        phoneEditText.text.clear()
+        passwordEditText.text.clear()
+        confirmPasswordEditText.text.clear()
     }
 }
