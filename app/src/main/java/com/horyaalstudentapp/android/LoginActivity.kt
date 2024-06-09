@@ -1,5 +1,3 @@
-// LoginActivity.kt
-
 package com.horyaalstudentapp.android
 
 import android.content.Intent
